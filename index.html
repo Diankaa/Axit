@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axit</title>
+    <link rel="stylesheet" href="css/libs.min.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:200,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <svg display="none">
+      <symbol viewBox="0 0 640 512" id="cloud" xmlns="http://www.w3.org/2000/svg">
+        <path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4
+         0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3
+         128-128 0-61.9-44-113.6-102.4-125.4zM393.4 288H328v112c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V288h-65.4c-14.3 0-21.4-17.2-11.3-27.3l105.4-105.4c6.2-6.2 16.4-6.2
+         22.6 0l105.4 105.4c10.1 10.1 2.9 27.3-11.3 27.3z"/>
+      </symbol>
+      <symbol viewBox="0 0 10 20" id="facebook" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.821 20v-9h2.733L10 7H6.821V5.052C6.821 4.022 6.848 3 8.287 3h1.458V.14c0-.043-1.253-.14-2.52-.14C4.58 0 2.924
+         1.657 2.924 4.7V7H0v4h2.923v9h3.898z" fill-rule="evenodd"/>
+      </symbol>
+      <symbol viewBox="0 0 512 512" id="flash" xmlns="http://www.w3.org/2000/svg">
+        <path d="M400.268 175.599a8.53 8.53 0 00-7.731-4.932h-101.12l99.797-157.568a8.529 8.529 0 00.265-8.678A8.533 8.533 0 00384.003 0H247.47a8.541 8.541 0 00-7.637 4.719l-128
+         256a8.522 8.522 0 00.375 8.294 8.546 8.546 0 007.262 4.053h87.748l-95.616 227.089a8.55 8.55 0 003.413 10.59 8.55 8.55
+         0 0010.983-1.775l273.067-324.267a8.541 8.541 0 001.203-9.104z"/>
+      </symbol>
+      <symbol viewBox="0 0 96.669 96.669" id="google" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50.91 55.189l-4.533-3.522c-1.38-1.144-3.27-2.656-3.27-5.422 0-2.778 1.889-4.544 3.527-6.18 5.279-4.157 10.557-8.581 10.557-17.903 0-9.586-6.031-14.629-8.923-17.022h7.795L64.244
+         0H39.459C32.658 0 22.856 1.608 15.68 7.533c-5.408 4.666-8.046 11.099-8.046 16.892 0 9.831 7.548 19.798 20.88 19.798 1.259 0 2.636-.124 4.022-.252-.623 1.515-1.252 2.777-1.252 4.917
+         0 3.905 2.006 6.299 3.774 8.567-5.663.39-16.237 1.018-24.033 5.809-7.424 4.415-9.684 10.84-9.684 15.377 0 9.334 8.8 18.028 27.045 18.028 21.636 0 33.089-11.971
+         33.089-23.823.002-8.707-5.028-12.992-10.565-17.657zM34.431 40.691c-10.824 0-15.727-13.992-15.727-22.434 0-3.288.623-6.682 2.763-9.333C23.486 6.4 27 4.762 30.281 4.762c10.434 0 15.846 14.118
+         15.846 23.197 0 2.271-.251 6.296-3.144 9.207-2.023 2.021-5.409 3.525-8.552 3.525zm.124 50.696c-13.46 0-22.139-6.438-22.139-15.392 0-8.949 8.048-11.978 10.816-12.979 5.281-1.777 12.076-2.024
+         13.21-2.024 1.258 0 1.887 0 2.889.126 9.568 6.81 13.721 10.203 13.721 16.65.001 7.805-6.417 13.619-18.497 13.619zm48.124-50.888V27.894h-6.224v12.605H63.869v6.294h12.586v12.684h6.224V46.793h12.649v-6.294z"/>
+      </symbol>
+      <symbol viewBox="0 0 1792 1792" id="iconfinder" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1120 576q0 13-9.5 22.5T1088 608t-22.5-9.5-9.5-22.5q0-46-54-71t-106-25q-13 0-22.5-9.5T864 448t9.5-22.5T896 416q50 0 99.5 16t87 54 37.5 90zm160 0q0-72-34.5-134t-90-101.5-123-62T896 256t-136.5 22.5-123
+         62-90 101.5T512 576q0 101 68 180 10 11 30.5 33t30.5 33q128 153 141 298h228q13-145 141-298 10-11 30.5-33t30.5-33q68-79 68-180zm128 0q0 155-103 268-45 49-74.5 87t-59.5 95.5-34 107.5q47 28 47 82 0 37-25 64 25 27
+         25 64 0 52-45 81 13 23 13 47 0 46-31.5 71t-77.5 25q-20 44-60 70t-87 26-87-26-60-70q-46 0-77.5-25t-31.5-71q0-24 13-47-45-29-45-81 0-37 25-64-25-27-25-64 0-54 47-82-4-50-34-107.5T561.5 931 487 844Q384 731 384
+         576q0-99 44.5-184.5t117-142 164-89T896 128t186.5 32.5 164 89 117 142T1408 576z"/>
+      </symbol>
+      <symbol viewBox="0 0 510 510" id="instagram" xmlns="http://www.w3.org/2000/svg">
+        <path d="M459 0H51C22.95 0 0 22.95 0 51v408c0 28.05 22.95 51 51 51h408c28.05 0 51-22.95 51-51V51c0-28.05-22.95-51-51-51zM255 153c56.1 0 102 45.9 102 102s-45.9 102-102 102-102-45.9-102-102 45.9-102 102-102zM63.75
+         459C56.1 459 51 453.9 51 446.25V229.5h53.55C102 237.15 102 247.35 102 255c0 84.15 68.85 153 153 153s153-68.85 153-153c0-7.65 0-17.85-2.55-25.5H459v216.75c0 7.65-5.1 12.75-12.75 12.75H63.75zM459 114.75c0 7.65-5.1
+         12.75-12.75 12.75h-51c-7.65 0-12.75-5.1-12.75-12.75v-51c0-7.65 5.1-12.75 12.75-12.75h51C453.9 51 459 56.1 459 63.75v51z"/>
+      </symbol>
+      <symbol viewBox="0 0 548.176 548.176" id="keyboard" xmlns="http://www.w3.org/2000/svg">
+        <path d="M537.468 120.342c-7.139-7.139-15.753-10.709-25.841-10.709H36.545c-10.088 0-18.699 3.571-25.837 10.709C3.571 127.48 0 136.094 0 146.179v255.815c0 10.089 3.571 18.698 10.708 25.837 7.139 7.139 15.749
+         10.712 25.837 10.712h475.082c10.088 0 18.702-3.573 25.841-10.712 7.135-7.139 10.708-15.748 10.708-25.837V146.179c0-10.085-3.573-18.699-10.708-25.837zm-25.841 281.652H36.545V146.179h475.082v255.815z"/>
+        <path d="M77.657 365.445h27.408c3.046 0 4.569-1.526 4.569-4.568v-27.408c0-3.039-1.52-4.568-4.569-4.568H77.657c-3.044 0-4.568 1.529-4.568 4.568v27.408c0 3.042 1.524 4.568 4.568 4.568zm0-73.083h63.954c3.045 0
+         4.57-1.53 4.57-4.572v-27.41c0-3.045-1.525-4.565-4.57-4.568H77.657c-3.044 0-4.568 1.523-4.568 4.568v27.41c0 3.042 1.524 4.572 4.568 4.572zm0-73.094h27.408c3.046 0 4.569-1.525 
+         4.569-4.57v-27.406c0-3.046-1.52-4.565-4.569-4.57H77.657c-3.044 0-4.568 1.524-4.568 4.57v27.406c0 3.045 1.524 4.57 4.568 4.57zM397.43 328.903H150.751c-3.046 0-4.57 1.526-4.57 4.572v27.404c0 3.039 1.524 4.572
+         4.57 4.572h246.67c3.046 0 4.572-1.526 4.572-4.572v-27.404c.001-3.045-1.525-4.572-4.563-4.572zM182.725 287.79c0 3.042 1.523 4.572 4.565 4.572h27.412c3.044 0 4.565-1.53 4.565-4.572v-27.41c0-3.045-1.518-4.565-4.565-4.568H187.29c-3.042 0-4.565 
+         1.523-4.565 4.568v27.41zm-31.974-68.522h27.406c3.046 0 4.57-1.525 4.57-4.57v-27.406c0-3.046-1.524-4.565-4.57-4.57h-27.406c-3.046 0-4.57 1.524-4.57 4.57v27.406c0 3.045 1.525 4.57 4.57 4.57zm105.062 68.522c0 3.042
+         1.524 4.572 4.568 4.572h27.408c3.046 0 4.572-1.53 4.572-4.572v-27.41c0-3.045-1.526-4.565-4.572-4.568h-27.408c-3.044 0-4.568 1.523-4.568 4.568v27.41zm-31.976-68.522h27.406c3.046 0 4.57-1.525 4.57-4.57v-27.406c0-3.046-1.521-4.565-4.57-4.57h-27.406c-3.046
+         0-4.57 1.524-4.57 4.57v27.406c0 3.045 1.524 4.57 4.57 4.57zm105.067 68.522c0 3.042 1.525 4.572 4.564 4.572h27.412c3.045 0 4.564-1.53 4.564-4.572v-27.41c0-3.045-1.52-4.565-4.564-4.568h-27.412c-3.039 0-4.564 1.523-4.564 4.568v27.41zm141.609 41.113h-27.404c-3.046
+         0-4.572 1.526-4.572 4.572v27.404c0 3.039 1.526 4.572 4.572 4.572h27.404c3.046 0 4.572-1.526 4.572-4.572v-27.404c0-3.045-1.523-4.572-4.572-4.572zM296.928 219.268h27.411c3.046 0 4.565-1.525 4.565-4.57v-27.406c0-3.046-1.52-4.565-4.565-4.57h-27.411c-3.046 0-4.565
+         1.524-4.565 4.57v27.406c-.001 3.045 1.519 4.57 4.565 4.57zm73.09 0h27.404c3.046 0 4.572-1.525 4.572-4.57v-27.406c0-3.046-1.526-4.565-4.572-4.57h-27.404c-3.046 0-4.572 1.524-4.572 4.57v27.406c-.001 3.045 1.526 4.57 4.572 4.57zm31.973 68.522c0 3.042 1.522 4.572
+         4.568 4.572h63.953c3.046 0 4.572-1.53 4.572-4.572V187.292c0-3.046-1.522-4.565-4.572-4.57h-27.404c-3.046 0-4.572 1.524-4.572 4.57v68.52H406.56c-3.046 0-4.568 1.523-4.568 4.568v27.41z"/>
+      </symbol>
+      <symbol viewBox="0 0 579.148 579.148" id="pinterest" xmlns="http://www.w3.org/2000/svg">
+        <path d="M434.924 38.847C390.561 12.954 342.107.01 289.574.01c-52.54 0-100.992 12.944-145.356 38.837C99.854 64.741 64.725 99.87 38.837 144.228 12.944 188.597 0 237.049 0 289.584c0 58.568 15.955 111.732
+         47.883 159.486 31.922 47.768 73.771 83.08 125.558 105.949-1.01-26.896.625-49.137 4.902-66.732l37.326-157.607c-6.285-12.314-9.425-27.645-9.425-45.999 0-21.365 5.404-39.217 16.212-53.538 10.802-14.333 24.003-21.5
+         39.59-21.5 12.564 0 22.246 4.143 29.034 12.448 6.787 8.292 10.184 18.727 10.184 31.292 0 7.797-1.451 17.289-4.334 28.47-2.895 11.187-6.665 24.13-11.31 38.837-4.651 14.701-7.98 26.451-9.994 35.252-3.525 15.33-.63
+         28.463 8.672 39.4 9.295 10.936 21.616 16.4 36.952 16.4 26.898 0 48.955-14.951 66.176-44.865 17.217-29.914 25.826-66.236 25.826-108.973 0-32.925-10.617-59.701-31.859-80.312-21.242-20.606-50.846-30.918-88.795-30.918-42.486
+         0-76.862 13.642-103.123 40.906-26.267 27.277-39.401 59.896-39.401 97.84 0 22.625 6.414 41.609 19.229 56.941 4.272 5.029 5.655 10.428 4.149 16.205-.508 1.512-1.511 5.281-3.017 11.309-1.505 6.029-2.515 9.934-3.017 11.689-2.014
+         8.049-6.787 10.564-14.333 7.541-19.357-8.043-34.064-21.99-44.113-41.85-10.055-19.854-15.08-42.852-15.08-68.996 0-16.842 2.699-33.685 8.103-50.527s13.819-33.115 25.264-48.832c11.432-15.698 25.135-29.596 41.102-41.659 15.961-12.069 
+         35.38-21.738 58.256-29.04 22.871-7.283 47.51-10.93 73.904-10.93 35.693 0 67.744 7.919 96.146 23.751 28.402 15.839 50.086 36.329 65.043 61.463 14.951 25.135 22.436 52.026 22.436 80.692 0 37.705-6.541 71.641-19.607 101.807-13.072 30.166-31.549
+         53.855-55.43 71.072-23.887 17.215-51.035 25.826-81.445 25.826-15.336 0-29.664-3.58-42.986-10.748-13.33-7.166-22.503-15.648-27.528-25.453-11.31 44.486-18.097 71.018-20.361 79.555-4.78 17.852-14.584 38.457-29.413 61.836 26.897 8.043 54.296
+         12.062 82.198 12.062 52.534 0 100.987-12.943 145.35-38.83 44.363-25.895 79.492-61.023 105.387-105.393 25.887-44.365 38.838-92.811 38.838-145.352 0-52.54-12.951-100.985-38.838-145.355-25.889-44.334-61.024-79.463-105.387-105.357z"/>
+      </symbol>
+      <symbol viewBox="0 -31 512 512" id="telegram" xmlns="http://www.w3.org/2000/svg">
+        <path d="M123.195 260.738l63.68 159.188 82.902-82.903L411.918 450 512 0 0 213.266zm242.5-131.629L208.98 272.051l-19.52 73.566-36.058-90.164zm0 0"/>
+      </symbol>
+      <symbol viewBox="0 0 24 24" id="twitter" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21.534 7.113A9.822 9.822 0 0024 4.559v-.001c-.893.391-1.843.651-2.835.777a4.894 4.894 0 002.165-2.719 9.845 9.845 0 01-3.12 1.191 4.919 4.919 0 00-8.511 3.364c0 .39.033.765.114 1.122-4.09-.2-7.71-2.16-10.142-5.147a4.962
+         4.962 0 00-.674 2.487c0 1.704.877 3.214 2.186 4.089A4.863 4.863 0 01.96 9.116v.054a4.943 4.943 0 003.942 4.835c-.401.11-.837.162-1.29.162-.315 0-.633-.018-.931-.084.637 1.948 2.447 3.381 4.597 3.428a9.89 9.89 0 01-6.101 2.098c-.403
+         0-.79-.018-1.177-.067a13.856 13.856 0 007.548 2.208c8.683 0 14.342-7.244 13.986-14.637z"/>
+      </symbol>
+      <symbol viewBox="0 0 24 24" id="rss" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="3.429" cy="20.571" r="3.429"/>
+        <path d="m11.429 24h4.57c0-8.821-7.178-15.999-15.999-16v4.572c6.302.001 11.429 5.126 11.429 11.428z"/>
+        <path d="m24 24c0-13.234-10.766-24-24-24v4.571c10.714 0 19.43 8.714 19.43 19.429z"/>
+      </symbol>
+    </svg>
+  </head>
+  <body>
+    <!-- header section start -->
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <img class="header__logo animated fadeInLeft" src="images/logo.png" alt="Logo">
+          <nav class="nav">
+            <ul class="nav__list">
+              <li class="nav__item  animated fadeInDown" id="home-link">
+                <a href="#home" class="nav__link">Home</a>
+              </li>
+              <li class="nav__item animated fadeInDown" id="features-link">
+                <a href="#features" class="nav__link">Features</a>
+              </li>
+              <li class="nav__item animated fadeInDown" id="about-link">
+                <a href="#about" class="nav__link">About</a>
+              </li>
+              <li class="nav__item animated fadeInDown" id="pricing-link">
+                <a href="#pricing" class="nav__link">Pricing</a>
+              </li>
+              <li class="nav__item animated fadeInDown" id="reviews-link">
+                <a href="#reviews" class="nav__link">Reviews</a>
+              </li>
+              <li class="nav__item animated fadeInDown" id="contact-link">
+                <a href="#contact" class="nav__link">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="humburger">
+            <span class="humburger-line humburger-line--1"></span>
+            <span class="humburger-line humburger-line--2"></span>
+            <span class="humburger-line humburger-line--3"></span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header section end -->
+    <!-- intro section start -->
+    <section class="intro" id="home">
+      <div class="intro__shadow"></div>
+      <div class="container">
+        <div class="intro__inner">
+          <div class="intro__info">
+            <img class="intro__info-logo animated fadeInLeftBig" src="images/logo.png" alt="#">
+            <h1 class="intro__info-title animated fadeInLeftBig">
+              MODERN AXURE TEMPLATE
+              FOR BEAUTIFUL PROTOTYPES
+            </h1>
+            <div class="intro__info-text animated zoomIn">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              euismod bibendum laoreet. Proin gravida dolor sit amet lacus
+              accumsan et viverra justo commodo.
+            </div>
+            <a href="#" class="intro__info-btn dark-btn animated zoomIn">Download</a>
+          </div>
+          <form action="#" class="intro__form animated fadeInRight">
+            <div class="intro__form-title">
+              Try Your <span>FREE</span> Trial Today
+            </div>
+            <div class="intro__form-fields">
+              <input class="intro__form-input" type="text" name="name" placeholder="Name">
+              <input class="intro__form-input intro__form-input--email" type="email" name="email" placeholder="Email">
+              <input class="intro__form-input" type="password" name="password" placeholder="Password">
+            </div>
+            <button class="intro__form-btn" type="submit">Get Strated</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- social section end -->
+    <!-- social section start -->
+    <section class="social">
+      <div class="container">
+        <div class="social__inner animated fadeIn">
+          <div class="social__info">
+            <h3 class="social__title">Social Media</h3>
+            <div class="social__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              euismod bibendum laoreet.
+            </div>
+          </div>
+          <div class="social__icons">
+            <a class="social__link" href="#" target="_blank">
+              <svg class="social__icon" role="img">    
+                <use xlink:href="#facebook"></use>
+              </svg>
+            </a>
+            <a class="social__link" href="#" target="_blank">
+              <svg class="social__icon">
+                <use xlink:href="#twitter"></use>
+              </svg>
+            </a>
+            <a class="social__link" href="#" target="_blank">
+              <svg class="social__icon">
+                <use xlink:href="#google"></use>
+              </svg>
+            </a>
+            <a class="social__link" href="#" target="_blank">
+              <svg class="social__icon">
+                <use xlink:href="#pinterest"></use>
+              </svg>
+            </a>
+            <a class="social__link" href="#" target="_blank">
+              <svg class="social__icon">
+                <use xlink:href="#instagram"></use>
+              </svg>
+            </a>
+            <a class="social__link" href="#" target="_blank">
+              <svg class="social__icon">
+                <use xlink:href="#telegram"></use>
+              </svg>
+            </a>
+            <a class="social__link" href="#" target="_blank">
+              <svg class="social__icon">
+                <use xlink:href="#rss"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--container  -->
+    </section>
+    <!-- social section end -->
+    <!-- tabs section start -->
+    <section class="tabs" id="features">
+      <div class="container">
+        <div class="tabs__inner">
+          <div class="boxes">
+            <div class="boxes__item wow fadeInLeft" data-wow-delay=".1s" data-filter=".category-a">
+              <div class="boxes__item-name">TAB 1</div>
+            </div>
+            <div class="boxes__item wow fadeInLeft" data-wow-delay=".3s" data-filter=".category-b">
+              <div class="boxes__item-name">TAB 2</div>
+            </div>
+            <div class="boxes__item wow fadeInLeft" data-wow-delay=".5s" data-filter=".category-c">
+              <div class="boxes__item-name">TAB 3</div>
+            </div>
+          </div>
+          <div class="tabs__items">
+            <div class="tabs__item mix category-a">
+              <div class="tabs__info">
+                <!-- wow fadeInRight -->
+                <h3 class="tabs__title wow fadeInRight" data-wow-delay=".8s">Tabs with soft transitioning effect.</h3>
+                <!-- wow zoomIn -->
+                <div class="tabs__text wow zoomIn" data-wow-delay=".7s">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet. Proin gravida dolor sit amet
+                    lacus accumsan et viverra justo commodo. Proin sodales
+                    pulvinar tempor. Cum sociis natoque penatibus et magnis dis
+                    parturient montes.
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet.
+                  </p>
+                </div>
+                <!-- wow fadeInUp -->
+                <a class="tabs__btn section-btn wow fadeInUp" data-wow-delay=".8s">Download</a>
+              </div>
+              <!-- wow fadeInRightBig -->
+              <div class="tabs__image wow fadeInRightBig">
+                <img src="images/town.png" alt="#" />
+              </div>
+            </div>
+            <div class="tabs__item mix category-b">
+              <div class="tabs__info">
+                <h3 class="tabs__title">Tabs with soft transitioning effect.</h3>
+                <div class="tabs__text">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet. Proin gravida dolor sit amet
+                    lacus accumsan et viverra justo commodo. Proin sodales
+                    pulvinar tempor. Cum sociis natoque penatibus et magnis dis
+                    parturient montes.
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet.
+                  </p>
+                </div>
+                <a class="tabs__btn">Download</a>
+              </div>
+              <div class="tabs__image">
+                <img src="images/town.png" alt="#" />
+              </div>
+            </div>
+            <div class="tabs__item mix category-c">
+              <div class="tabs__info">
+                <h3 class="tabs__title">Tabs with soft transitioning effect.</h3>
+                <div class="tabs__text">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet. Proin gravida dolor sit amet
+                    lacus accumsan et viverra justo commodo. Proin sodales
+                    pulvinar tempor. Cum sociis natoque penatibus et magnis dis
+                    parturient montes.
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet.
+                  </p>
+                </div>
+                <a class="tabs__btn">Download</a>
+              </div>
+              <div class="tabs__image">
+                <img src="images/town.png" alt="#" />
+              </div>
+            </div>
+          </div>            
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- tabs section end -->
+    <!-- feature one section start -->
+    <section class="feature">
+      <div class="container">
+         <div class="feature__inner">
+          <!-- wow slideInLeft -->
+           <div class="feature__image-wrapper wow slideInLeft">
+             <img class="feature__image" src="images/image-left.png" alt="#">
+           </div>
+           <!-- wow slideInRight -->
+           <div class="feature__info wow slideInRight">
+             <h3 class="feature__title wow slideInUp" data-wow-delay=".2s">Sub list section</h3>
+             <div class="feature__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean 
+              euismod bibendum laoreet. Proin gravida dolor sit amet lacus 
+              accumsan et viverra justo commodo.
+             </div>
+               <div class="option">
+                <div class="option__icon">
+                  <svg>
+                    <use xlink:href="#cloud"></use>
+                  </svg>
+                </div>
+                <div class="option__content">
+                  <div class="option__title">Title</div>
+                  <div class="option__text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Aenean euismod bibendum laoreet.
+                  </div>
+                </div>
+               </div>
+               <div class="option">
+                <div class="option__icon">
+                  <svg>
+                    <use xlink:href="#cloud"></use>
+                  </svg>
+                </div>
+                <div class="option__content">
+                  <div class="option__title">Title</div>
+                  <div class="option__text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Aenean euismod bibendum laoreet. Proin gravida dolor 
+sit amet lacus accumsan et viverra justo commodo.
+                  </div>
+                </div>
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
+    </section>
+    <!-- feature one section end -->
+    <!-- feature two section start -->
+    <section class="feature standpic">
+      <div class="container">
+         <div class="feature__inner standpic-inner">
+          <div class="feature__info wow slideInLeft">
+            <h3 class="feature__title">Standard Picture Section</h3>
+            <div class="feature__text">
+             <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean 
+              euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan 
+              et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis 
+              natoque penatibus et magnis dis parturient montes.
+             </p>
+             <p>
+               
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod 
+bibendum laoreet.
+             </p>
+            </div>
+          </div>
+           <div class="feature__image-wrapper standpic__image-wrapper wow slideInRight">
+             <img class="feature__image" src="images/standpic.png" alt="#">
+           </div>
+           </div>
+         </div>
+      </div>
+    </section>
+    <!-- feature two section end -->
+    <!-- awesome section start -->
+    <section class="awesome section" id="about">
+      <div class="container">
+        <div class="awesome__inner section__wrapper">
+          <div class="section-header wow slideInUp">
+            <h3 class="section-header__title">WHY THIS IS AWESOME</h3>
+            <div class="section-header__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </div>
+          </div>
+        <div class="awesome__options">
+          <div class="option awesome-option wow fadeInUp" data-wow-delay=".1s">
+            <div class="option__icon awesome-icon">
+              <svg>
+                <use xlink:href="#iconfinder"></use>
+              </svg>
+            </div>
+            <div class="option__content awesome-content">
+              <div class="option__title awesome-title">Thoughtful Design</div>
+              <div class="option__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing 
+elit. Aenean euismod bibendum laoreet. Proin gravida 
+dolor sit amet lacus accumsan et viverra.
+              </div>
+            </div>
+           </div>
+           <div class="option awesome-option wow fadeInUp" data-wow-delay=".3s">
+            <div class="option__icon awesome-icon">
+              <svg>
+                <use xlink:href="#keyboard"></use>
+              </svg>
+            </div>
+            <div class="option__content awesome-content">
+              <div class="option__title awesome-title">Well Crafted</div>
+              <div class="option__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing 
+elit. Aenean euismod bibendum laoreet. Proin gravida 
+dolor sit amet lacus accumsan et viverra.
+              </div>
+            </div>
+           </div>
+           <div class="option awesome-option wow fadeInUp" data-wow-delay=".5s">
+            <div class="option__icon awesome-icon">
+              <svg>
+                <use xlink:href="#flash"></use>
+              </svg>
+            </div>
+            <div class="option__content awesome-content">
+              <div class="option__title awesome-title">Easy to Customize</div>
+              <div class="option__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing 
+elit. Aenean euismod bibendum laoreet. Proin gravida 
+dolor sit amet lacus accumsan et viverra.
+              </div>
+            </div>
+           </div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <!-- awesome section end -->
+    <!-- pricing section start -->
+    <section class="pricing section" id="pricing">
+      <div class="container">
+        <div class="pricing__inner section__wrapper">
+          <div class="section-header wow slideInUp">
+            <h3 class="section-header__title">PRICING OPTIONS</h3>
+            <div class="section-header__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </div>
+          </div>
+          <div class="pricing__cards">
+            <div class="card wow zoomIn" data-wow-delay=".1s">
+              <div class="card__header">
+                <div class="card__title-wrapper">
+                  <div class="card__title">Basic</div>
+                </div>
+                <div class="card__price">
+                  <span class="card__cur">$</span>
+                  <span class="card__num">0</span>
+                  <div class="card__price-per">
+                    Free for Life
+                  </div>
+              </div>
+              </div>
+              <ul class="info-list">
+                <li class="info-list__item">10 gb of bandwidth</li>
+                <li class="info-list__item">1 gb of space</li>
+                <li class="info-list__item">3 websites</li>
+                <li class="info-list__item">Basic Customization</li>
+                <li class="info-list__item">wordpress integration</li>
+                <li class="info-list__item">email support</li>
+              </ul>
+            </div>
+            <div class="card card-main wow zoomIn" data-wow-delay=".2s">
+              <div class="card__header">
+                <div class="card__title-wrapper">
+                  <div class="card__title">Professional</div>
+                </div>
+                <div class="card__price card-main__price">
+                  <span class="card__cur">$</span>
+                  <span class="card__num">19</span>
+                  <div class="card__price-per">
+                    Monthly Payment
+                  </div>
+              </div>
+              <div class="card-main__desc">
+                OUR MOST POPULAR
+              </div>
+              </div>
+              <ul class="info-list">
+                <li class="info-list__item">50 gb of bandwidth</li>
+                <li class="info-list__item">5 gb of space</li>
+                <li class="info-list__item">12 websites</li>
+                <li class="info-list__item">Advanced Customization</li>
+                <li class="info-list__item">wordpress integration</li>
+                <li class="info-list__item">email support</li>
+              </ul>
+            </div>
+            <div class="card wow zoomIn" data-wow-delay=".3s">
+              <div class="card__header">
+                <div class="card__title-wrapper">
+                  <div class="card__title">Enterprise</div>
+                </div>
+                <div class="card__price">
+                  <span class="card__cur">$</span>
+                  <span class="card__num">70</span>
+                  <div class="card__price-per">
+                    Monthly Payment
+                  </div>
+              </div>
+              </div>
+              <ul class="info-list">
+                <li class="info-list__item">unlimited bandwidth</li>
+                <li class="info-list__item">unlimited space</li>
+                <li class="info-list__item">3 websites</li>
+                <li class="info-list__item">Advanced Customization</li>
+                <li class="info-list__item">wordpress integration</li>
+                <li class="info-list__item">email support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- pricing section end -->
+    <!-- customers section start -->
+    <section class="customers section__wrapper" id="reviews">
+      <div class="container">
+        <div class="section-header wow slideInUp">
+          <h3 class="section-header__title">WHAT OUR CUSTOMERS ARE SAYING</h3>
+          <div class="section-header__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </div>
+        </div>
+        <div class="customers__blocks">
+            <div class="block wow zoomIn" data-wow-delay=".1s">
+              <div class="block__info">
+                Lorem ipsum dolor sit amet, 
+                consectetur adipisicing elit. Doloribus 
+                accusamus expedita repellat similique 
+                odio aspernatur ex, architecto eaque 
+                quo suscipit.
+              </div>
+              <div class="block__customer">
+                <img class="block__customer-foto" src="images/customer-1.png" alt="#">
+                <div class="block__customer-name">Jeremy H.
+                  <span class="block__customer-pos">Manager</span>
+                </div>
+              </div>
+            </div>
+            <div class="block wow zoomIn" data-wow-delay=".2s">
+              <div class="block__info">
+                Lorem ipsum dolor sit amet, 
+                consectetur adipisicing elit. Doloribus 
+                accusamus expedita repellat similique 
+                odio aspernatur ex, architecto eaque 
+                quo suscipit.
+              </div>
+              <div class="block__customer">
+                <img class="block__customer-foto" src="images/customer-1.png" alt="#">
+                <div class="block__customer-name">John S.
+                  <span class="block__customer-pos">Freelancer</span>
+                </div>
+              </div>
+            </div>
+            <div class="block wow zoomIn" data-wow-delay=".3s">
+              <div class="block__info">
+                Lorem ipsum dolor sit amet, 
+                consectetur adipisicing elit. Doloribus 
+                accusamus expedita repellat similique 
+                odio aspernatur ex, architecto eaque 
+                quo suscipit.
+              </div>
+              <div class="block__customer">
+                <img class="block__customer-foto" src="images/customer-1.png" alt="#">
+                <div class="block__customer-name">Susan W.
+                  <span class="block__customer-pos">Photographer</span>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <!-- customers section end -->
+    <!-- stylish section start -->
+    <section class="stylish wow zoomInDown">
+      <div class="stylish__shadow"></div>
+      <div class="stylish__inner">
+      <div class="container">
+        <div class="section-header stylish__header">
+          <h3 class="section-header__title stylish__header-title">STYLISH AXURE DESIGN</h3>
+          <div class="section-header__text stylish__header-text">
+            Use the sections you need, remove the ones you don't.  Create gorgeous prototypes faster than ever!
+          </div>
+        </div>
+        <div class="stylish__btn-wrapper">
+          <a href="#" class="stylish__btn dark-btn">Download</a>
+        </div>
+      </div>
+      </div>
+    </section>
+    <!-- stylish section end -->
+    <!-- contact section start -->
+    <section class="contact section__wrapper" id="contact">
+      <div class="container">
+        <div class="section-header wow slideInUp">
+          <h3 class="section-header__title">CONTACT US</h3>
+          <div class="section-header__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </div>
+        </div>
+        <form action="#" class="contact__form">
+          <div class="contact__form__inner">
+            <div class="contact__form-left">
+              <input class="contact__form-input wow zoomIn" data-wow-delay=".1s" type="text" name="name" placeholder="Name">
+              <input class="contact__form-input wow zoomIn" data-wow-delay=".2s" type="email" name="email" placeholder="Email">
+              <input class="contact__form-input wow zoomIn" data-wow-delay=".3s" type="text" name="name" placeholder="Subject">
+            </div>
+            <div class="contact__form-right">
+              <textarea class="contact__form-textarea wow zoomIn" data-wow-delay=".4s" placeholder="Message"></textarea>
+            </div>
+          </div>
+          <div class="contact__form-btn wow zoomIn" data-wow-delay=".5s">
+            <button type="submit" class="contact__btn section-btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- contact section end -->
+    <!-- footer section start -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner  wow fadeInLeft">
+          <div class="footer__social">
+            <a class="footer__social-link" href="#" target="_blank">
+              <svg class="footer__social-icon" role="img">    
+                <use xlink:href="#facebook"></use>
+              </svg>
+            </a>
+            <a class="footer__social-link" href="#" target="_blank">
+              <svg class="footer__social-icon">
+                <use xlink:href="#twitter"></use>
+              </svg>
+            </a>
+            <a class="footer__social-link" href="#" target="_blank">
+              <svg class="footer__social-icon">
+                <use xlink:href="#google"></use>
+              </svg>
+            </a>
+            <a class="footer__social-link" href="#" target="_blank">
+              <svg class="footer__social-icon">
+                <use xlink:href="#pinterest"></use>
+              </svg>
+            </a>
+            <a class="footer__social-link" href="#" target="_blank">
+              <svg class="footer__social-icon">
+                <use xlink:href="#instagram"></use>
+              </svg>
+            </a>
+            <a class="footer__social-link" href="#" target="_blank">
+              <svg class="footer__social-icon">
+                <use xlink:href="#telegram"></use>
+              </svg>
+            </a>
+            <a class="footer__social-link" href="#" target="_blank">
+              <svg class="footer__social-icon">
+                <use xlink:href="#rss"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="footer__copy">
+            © 2015 Axure Themes
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer section end -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/libs.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
